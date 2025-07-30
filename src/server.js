@@ -23,10 +23,12 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5001;
 
-
-
 app.get("/health", (req, res) => {
     res.status(200).json({ status: "OK" });
+});
+
+app.get("/", (req, res) => {
+  res.send("Backend API is live!");
 });
 
 app.use("/api/transactions", transactionsRoute);
