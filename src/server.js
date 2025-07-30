@@ -13,7 +13,11 @@ const app = express();
 if (process.env.NODE_ENV==="production") job.start();
 
 // Enable CORS for all origins (for testing)
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:8081'], // or whatever your frontend origin is
+  methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
+  credentials: true, // if using cookies or auth headers
+}));
 
 // Optional: more strict for production
 // app.use(cors({ origin: 'http://localhost:8081', credentials: true }));
