@@ -27,9 +27,8 @@ app.get("/health", (req, res) => {
     res.status(200).json({ status: "OK" });
 });
 
-app.get("/", (req, res) => {
-  res.send("Backend API is live!");
-});
+// routes
+app.get("/", transactionsRoute);
 
 app.use("/api/transactions", transactionsRoute);
 
