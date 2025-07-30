@@ -4,12 +4,19 @@ import { initDB } from './config/db.js';
 import rateLimiter from './middleware/rateLimiter.js';
 import transactionsRoute from './routes/transactionsRoute.js';
 import job from './config/cron.js';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 
 if (process.env.NODE_ENV==="production") job.start();
+
+// Enable CORS for all origins (for testing)
+app.use(cors());
+
+// Optional: more strict for production
+// app.use(cors({ origin: 'http://localhost:8081', credentials: true }));
 
 // middleware
 app.use(rateLimiter);
