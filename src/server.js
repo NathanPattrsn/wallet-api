@@ -27,9 +27,6 @@ app.get("/health", (req, res) => {
     res.status(200).json({ status: "OK" });
 });
 
-// routes
-app.get("/", transactionsRoute);
-
 app.use("/api/transactions", transactionsRoute);
 
 initDB().then(() => {
